@@ -54,3 +54,8 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
+" change the 4 direction keys into E-Macs mode in Insert mode
+:imap <C-f> <left>
+:imap <C-b> <right>
+:imap <C-n> <down>
+:imap <C-p> <up>
