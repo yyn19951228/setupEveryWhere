@@ -243,6 +243,27 @@ move 命令也和 copy 一样
 :[range]m[ove] {address}	
 这里只是将拷贝，换为移动。
 
+
+##############################################################################
+# 块操作
+##############################################################################
+insert into the end of a group of lines:
+###
+<c-V> - Enter Visual Block mode.
+Use j/k to select the lines.
+$ - Move cursor to last character.
+A - Enter insert mode after last character.
+Insert desired text.
+<Esc> - Exit insert mode and finish block append.
+###
+On first line just type: 4:norm A.
+
+4 and : create a range for you and then norm A. adds the dot to each line
+
+Another solution for longer paragraphs could be: Vip<C-v>$A.<Esc>
+
+The first step is to select the paragraph with Vip then you change to visual block mode and move the cursor to the end of each line with $ then you add the . to each line with A. and got to normal mode with <Esc> to see the change be applied to each line.
+
 ##############################################################################
 # 文本对象 - c,d,v,y 等命令后接文本对象，一般为：<范围 i/a><类型>
 ##############################################################################
