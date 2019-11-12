@@ -29,6 +29,7 @@ set splitbelow             " Open new windows below the current window.
 set splitright             " Open new windows right of the current window.
 
 set nu
+set rnu
 set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
@@ -41,10 +42,18 @@ else
   let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'dracula/vim', {'as': 'dracula'}
-
+call plug#begin('~/.vim/plugged/')
+" Install VIM-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Install Theme
+Plug 'dracula/vim', { 'as': 'dracula' }
+" Use release branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Or latest tag
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+" Or build from source code by use yarn: https://yarnpkg.com
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " fish shell is what im currently using "
@@ -54,8 +63,9 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
-" change the 4 direction keys into E-Macs mode in Insert mode
-:imap <C-f> <left>
-:imap <C-b> <right>
-:imap <C-n> <down>
-:imap <C-p> <up>
+" set vim-airline theme
+let g:airline_theme='simple'
+
+" set Theme
+colorscheme dracula
+
