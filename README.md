@@ -1,1 +1,3 @@
 # setupEveryWhere
+
+add test
