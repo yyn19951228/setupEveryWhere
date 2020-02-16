@@ -24,5 +24,6 @@ cp ./vimrc ~/.vimrc
 # copy coc-settings
 cp ./coc-settings.json ~/.vim/coc-settings.json
 
-
+# copy tmux
+cp ./tmux.conf ~/.tmux.conf
 
