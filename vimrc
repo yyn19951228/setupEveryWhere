@@ -38,6 +38,8 @@ set synmaxcol   =200       " Only highlight the first 200 columns.
 set list                   " Show non-printable characters.
 set notagbsearch
 
+set spell
+
 set statusline^=%{coc#status()}
 
 let mapleader = ","
