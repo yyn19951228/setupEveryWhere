@@ -66,6 +66,8 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Install Theme
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -225,7 +227,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
-nmap <space>e :CocCommand explorer<CR>
+" nmap <space>e :CocCommand explorer<CR>
 
 " ======================
 " delimitMate config
@@ -261,8 +263,28 @@ let g:NERDToggleCheckAllLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+
+
 " ======================
-" settings for tags
+" NERD tree and NERD tree git
+" ======================
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+nmap <space>e :NERDTreeToggle<CR>"
+
+
+" ======================
+" settings for tags, (deprecated, due to the usage of COC right now)
 " ======================
 " set tags=./.tags;,.tags
 
