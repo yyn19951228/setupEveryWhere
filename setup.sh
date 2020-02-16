@@ -1,8 +1,12 @@
 # add check for vim version and update vim if needed
 # for linux-gnu
-# sudo add-apt-repository ppa:jonathonf/vim
-# sudo apt update
-# sudo apt install vim
+if [["$OSTYPE" == "linux-gnu"]]; then
+    sudo add-apt-repository ppa:jonathonf/vim;
+    sudo apt update;
+    sudo apt install vim;
+elif [["$OSTYPE" == "darwin"*]]; then
+    brew update; brew install vim; 
+fi
 
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
