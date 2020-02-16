@@ -17,5 +17,8 @@ npm i -g bash-language-server
 # copy vimrc 
 cp ./vimrc ~/.vimrc
 
+# copy coc-settings
+cp ./coc-settings.json ~/.vim/coc-settings.json
+
 
 
