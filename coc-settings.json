@@ -13,5 +13,7 @@
     }
   },
   "python.jediEnabled": false,
-  "python.linting.enabled": true
+  "python.linting.enabled": true,
+  "python.envFile": "${workspaceRoot}/.env" ,
+  "coc.preferences.jumpCommand": "vsplit"
 }

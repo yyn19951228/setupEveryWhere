@@ -2,6 +2,7 @@
 "you set it explicitly to make our position clear!"
 set nocompatible
 
+
 filetype plugin indent on 	" Load plugin according to detected filetype. "
 syntax on			" Enable syntax highlighting"	
 
