@@ -1,0 +1,32 @@
+# Tips for my usage for coc-nvim
+
+## General
+1. Make sure that vim version is following the requirements, for now, vim should >= 8.0
+2. The `go to definition` is different from vanilla vim. So in the configuration file provided by coc-nvim, the go to definition points to <coc-definitions>, and will be called by using `gd` by default, and the `<C-]>` is the default settings using tags, which will be superseded by coc-nvim
+
+## Python
+1. As mentioned in the coc-python, should set "python.jediEnabled" to false to use Microsoft Python Language Server(MPLS)
+2. For import the module in the Project/Dir, MPLS might have issues identify them, so we need 
+    1. First identify the Project/Dir, checkout here https://github.com/neoclide/coc.nvim/wiki/Using-workspaceFolders
+    or using `:CocList folders` to check, the default settings is to find .git 
+    2. Creating a .env file under Project/Dir, and add the following directories like 
+    PYTHONPATH="src/directory1:src/directory2" for
+    project-root
+    ├── .git
+    ├── .env
+    └── src
+	├── directory1
+	│   ├── file1.py (import file2)
+	│   └── file2.py (import file1)
+	└── directory2
+	    ├── file1.py (import file2)
+	    └── file2.py (import file1)
+    checkout here: https://github.com/neoclide/coc-python/issues/26
+
+
+## GoLang
+
+
+
+## JS/TS
+
