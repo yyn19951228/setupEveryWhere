@@ -36,6 +36,12 @@ set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 
 set list                   " Show non-printable characters.
+set notagbsearch
+
+set statusline^=%{coc#status()}
+
+let mapleader = ","
+
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
@@ -43,13 +49,25 @@ else
 endif
 
 call plug#begin('~/.vim/plugged/')
+" Install go plugin
+Plug 'fatih/vim-go'
+
 " Install VIM-airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Install Theme
-Plug 'dracula/vim', { 'as': 'dracula' }
+
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" comman usage
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+" Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/nerdcommenter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Install Theme
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 call plug#end()
 
 " fish shell is what im currently using "
@@ -59,14 +77,20 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
+" ======================
 " set vim-airline theme
+" ======================
 let g:airline_theme='simple'
 
+" ======================
 " set Theme
+" ======================
 colorscheme dracula
 
 
+" ======================
 " Settings for coc
+" ======================
 " https://github.com/neoclide/coc.nvim
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -105,7 +129,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -114,7 +138,8 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -196,4 +221,66 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
+nmap <space>e :CocCommand explorer<CR>
 
+" ======================
+" delimitMate config
+" ======================
+let g:delimitMate_autoclose = 1
+let g:delimitMate_matchpairs = "(:),[:],{:}"
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 2
+let g:delimitMate_expand_inside_quotes = 1
+filetype indent plugin on
+
+"
+
+" ======================
+" settings for vim-go
+" ======================
+" let g:go_def_mode='gopls'
+let g:go_def_mode='godef'
+let g:go_info_mode='gopls'
+let g:go_fmt_autosave = 1
+
+
+" ======================
+" settings for NERDCommenter
+" ======================
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" ======================
+" settings for tags
+" ======================
+" set tags=./.tags;,.tags
+
+
+" ======================
+" settings for vim-gutentags
+" ======================
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+" let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
+" 所生成的数据文件的名称 "
+" let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+" let s:vim_tags = expand('~/.cache/tags')
+" let g:gutentags_cache_dir = s:vim_tags
+" " 检测 ~/.cache/tags 不存在就新建 "
+" if !isdirectory(s:vim_tags)
+"    silent! call mkdir(s:vim_tags, 'p')
+" endif
+" 
+" " 配置 ctags 的参数 "
+" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+" let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
