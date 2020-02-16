@@ -1,5 +1,8 @@
 # add check for vim version and update vim if needed
-
+# for linux-gnu
+# sudo add-apt-repository ppa:jonathonf/vim
+# sudo apt update
+# sudo apt install vim
 
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
