@@ -2,7 +2,6 @@
 "you set it explicitly to make our position clear!"
 set nocompatible
 
-
 filetype plugin indent on 	" Load plugin according to detected filetype. "
 syntax on			" Enable syntax highlighting"	
 
@@ -39,9 +38,9 @@ set synmaxcol   =200       " Only highlight the first 200 columns.
 set list                   " Show non-printable characters.
 set notagbsearch
 
-set spell
-
 set statusline^=%{coc#status()}
+
+set spell
 
 let mapleader = ","
 
@@ -197,6 +196,8 @@ xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
+" run prettier of save
+let g:prettier#autoformat = 1
 
 " Use `:Fold` to fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)

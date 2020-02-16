@@ -13,8 +13,11 @@
     }
   },
   "python.jediEnabled": false,
-  "python.linting.enabled": true,
-//  "python.autoComplete.extraPaths": []",
   "python.envFile": "${workspaceRoot}/.env" ,
-  "coc.preferences.jumpCommand": "vsplit"
+  "python.linting.enabled": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "json",
+    "python"
+  ]
 }
