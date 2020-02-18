@@ -42,6 +42,7 @@ set statusline^=%{coc#status()}
 
 set spell
 
+
 let mapleader = ","
 
 if has('multi_byte') && &encoding ==# 'utf-8'
@@ -60,7 +61,7 @@ Plug 'fatih/vim-go'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " comman usage
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 " Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/nerdcommenter'
@@ -71,6 +72,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Install Theme
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -89,7 +91,7 @@ let g:airline_theme='simple'
 " ======================
 " set Theme
 " ======================
-colorscheme dracula
+colorscheme gruvbox
 
 
 " ======================
@@ -134,6 +136,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -245,10 +249,13 @@ filetype indent plugin on
 " ======================
 " settings for vim-go
 " ======================
-" let g:go_def_mode='gopls'
-let g:go_def_mode='godef'
+let g:go_def_mode='gopls'
+" let g:go_def_mode='godef'
 let g:go_info_mode='gopls'
 let g:go_fmt_autosave = 1
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
 
 
 " ======================
