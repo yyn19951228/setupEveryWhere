@@ -31,6 +31,7 @@
 
 
 ## GoLang
+1. gopls is very stupid, if in some sub-directory the autoComplete or godo-definition not works, we could run `go mod init <mode_name>`, and generate the go.mod in that sub-directory
 
 
 
