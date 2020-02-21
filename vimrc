@@ -53,7 +53,7 @@ endif
 
 call plug#begin('~/.vim/plugged/')
 " Install go plugin
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " Install VIM-airline
 
@@ -231,7 +231,9 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
-" nmap <space>e :CocCommand explorer<CR>
+
+" add coc extensions
+let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git']
 
 " ======================
 " delimitMate config
@@ -249,13 +251,13 @@ filetype indent plugin on
 " ======================
 " settings for vim-go
 " ======================
-let g:go_def_mode='gopls'
+" let g:go_def_mode='gopls'
 " let g:go_def_mode='godef'
-let g:go_info_mode='gopls'
-let g:go_fmt_autosave = 1
+" let g:go_info_mode='gopls'
+" let g:go_fmt_autosave = 1
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
+" let g:go_def_mapping_enabled = 0
 
 
 " ======================
