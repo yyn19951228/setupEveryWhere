@@ -231,16 +231,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
 
 " add coc-extensions
-let g:coc_global_extensions = ['coc-json',
-			'coc-html',
-			'coc-lists',
-			'coc-highlight',
-			'coc-pairs',
-			'coc-yank',
-			'coc-git',
-			'coc-spell-checker',
-			'coc-markdownlint'
-			]
+let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git', 'coc-spell-checker', 'coc-markdownlint']
     
 " ======================
 " settings for coc-spell-checker

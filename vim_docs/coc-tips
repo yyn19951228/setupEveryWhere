@@ -2,7 +2,10 @@
 
 ## General
 1. Make sure that vim version is following the requirements, for now, vim should >= 8.0
+
 2. The `go to definition` is different from vanilla vim. So in the configuration file provided by coc-nvim, the go to definition points to <coc-definitions>, and will be called by using `gd` by default, and the `<C-]>` is the default settings using tags, which will be superseded by coc-nvim
+
+3. coc-extensions: https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 
 ## Python
 1. As mentioned in the coc-python, should set "python.jediEnabled" to false to use Microsoft Python Language Server(MPLS)
