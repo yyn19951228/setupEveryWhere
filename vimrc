@@ -61,9 +61,7 @@ call plug#begin('~/.vim/plugged/')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " comman usage
-" Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-" Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -232,21 +230,28 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
 
-" add coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git']
-
+" add coc-extensions
+let g:coc_global_extensions = ['coc-json',
+			'coc-html',
+			'coc-lists',
+			'coc-highlight',
+			'coc-pairs',
+			'coc-yank',
+			'coc-git',
+			'coc-spell-checker',
+			'coc-markdownlint'
+			]
+    
 " ======================
-" delimitMate config
+" settings for coc-spell-checker
 " ======================
-let g:delimitMate_autoclose = 1
-let g:delimitMate_matchpairs = "(:),[:],{:}"
-let g:delimitMate_jump_expansion = 1
-let g:delimitMate_expand_space = 1
-let g:delimitMate_expand_cr = 2
-let g:delimitMate_expand_inside_quotes = 1
-filetype indent plugin on
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 
 "
+" ======================
+" end settings for coc
+" ======================
 
 " ======================
 " settings for vim-go
