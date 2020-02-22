@@ -53,9 +53,6 @@ endif
 
 call plug#begin('~/.vim/plugged/')
 " Install go plugin
-" Plug 'fatih/vim-go'
-
-" Install VIM-airline
 
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -67,6 +64,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'simeji/winresizer'
+Plug 'vimwiki/vimwiki'
 
 " Install Theme
 Plug 'dracula/vim', { 'as': 'dracula' }

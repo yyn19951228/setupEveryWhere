@@ -824,6 +824,141 @@ reddit              https://www.reddit.com/r/vim/
 - Vim 帮助系统里有一个使用技巧集合，使用 :h tips 阅读
 - Windows 下的 GVim 可以用 CTRL-INSERT 和 SHIFT-INSERT 操作系统剪贴板
 
+
+##############################################################################
+# vim-surround
+##############################################################################
+- Delete quotes surrounding a sentence
+	"Hello world!"
+	[] <--- cursor
+	ds"
+	Hello world!
+	[] <--- cursor now
+
+- Delete surrounding tags
+	<p>Start here</p>
+		[] <--- cursor
+	dst
+	Start here
+	[] <--- cursor now
+
+- Delete surrounding parentheses in some code	
+	(var1, var2)
+	ds(
+	var1, var2
+
+- Change surrounding quotes from double to single quote marks
+	"My kingdom for a horse"
+		[] <--- cursor here
+	cs"'
+	'My kingdom for a horse'
+	[] <--- cursor here now
+
+- Change to HTML paragraph with tags on separate lines
+	'Look, to the East'
+	cS'<p>
+	<p>
+	Look, to the East
+	</p>
+
+- Put some quotes around some text at the end of a line.
+	he said, Boo! scary huh
+			[] <--- cursor
+	ys$"
+	he said, "Boo! scary huh"
+
+- Put some square brackets around some variables. Note use of repetition in the motion.
+	print var1, var2
+		[] <--- cursor
+	ys3w)
+	print (var1, var2)
+		[] <--- cursor
+
+- Put some squiggly brackets around some code. This acts on the whole line with the cursor anywhere on the line
+	34, 21, 7
+	[] <-- cursor
+	yssB
+	{ 34, 21, 7 }
+	[] <-- cursor moves
+
+- Convert some speech into a HTML blockquote. Uses Vims search motion and surrounds ability to then put tags around that.
+	Jack said, "Done it!"
+			[] <--- cursor
+	ySf"t
+	Jack said, <blockquote>
+		"Done it!"
+	</blockquote>
+
+- Put some brackets around a procedure and indent the text
+	defn -proc1
+		[] <--- cursor
+	ySSb
+	(
+		defn -proc1
+	)
+
+- In *visual* mode
+	- commnads 
+		v                         # Enter visual mode
+		<visually select>         # Use the keyboard to select the section of text
+		S                         # Press upper case S
+		"                         # Specify what you want to surround the visual selection with
+
+	- Select a word and put rST italic marks around it
+		Add two eggs
+		[] <--- cursor
+		viwS*
+		Add *two* eggs
+		[] <--- cursor now
+
+	- Put HTML paragraph around some lines. Uses linewise visual mode
+		Consider this, when
+		we create an object
+		we take more memory.
+		Shift-v,
+		<highlight the text>
+		S<p>
+		<p>
+		Consider this, when
+		we create an object
+		we take more memory.
+		</p>
+	
+	- Put HTML list item on each line to create a list. Uses block wise visual mode
+		6 eggs
+		4 apples
+		2 pints of milk
+		Ctrl-v
+		<highlight the text>
+		S<li>
+		<li>6 eggs</li>
+		<li>4 apples</li>
+		<li>2 pints of milk</li>
+		Ctrl-v
+		<highlight the text>
+		s<li>
+		<li> eggs
+		<li> apples
+		<li> pints of milk
+	
+- surrounding targets
+( or )		Bracket. Using an open bracket adds additional spaces. Using a closed bracket doesn't add space.
+{ or }		Squiggly brackets. Using an open one ({) adds additional spaces. Using a closed one doesn't add space.
+[ or ]		Square brackets. Using an open bracket ie [ adds additional spaces. A closed one doesn't add spaces.
+< or >		Diamond bracket. Using an open one (<) adds additional spaces. A closed one doesn't add spaces.
+b			Bracket, alternative to (
+B			Bracket, alternative to )
+r			Alias for }
+a			Alias for ]
+`			A backtick
+"			A quote
+'			A single quote
+t			A pair of HTML or XML tags
+w			A word
+s			A sentence. I avoid as it's a bit confusing, it only works with cs and it mentally conflicts with yss meaning to work on the current line.
+p			A paragraph.
+
+
 ##############################################################################
 # References
 ##############################################################################

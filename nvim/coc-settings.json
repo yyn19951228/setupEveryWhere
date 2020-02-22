@@ -18,5 +18,5 @@
   "python.jediEnabled": false,
   "python.envFile": "${workspaceRoot}/.env",
   "python.linting.enabled": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "json", "python"]
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "json", "python", "go"]
 }
