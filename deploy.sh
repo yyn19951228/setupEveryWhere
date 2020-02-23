@@ -13,17 +13,18 @@ do
 	    ;;
 	-N|-neovim)
 	    # install neovim
-	    if [["$OSTYPE" == "linux-gnu"]]; then
+	    if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		pushd .
 		mkdir -p ~/.eronDeployment
 		cd ~/.eronDeployment
-		curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-		tar xzf nvim-macos.tar.gz
+		curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+		chmod u+x nvim.appimage
 		echo 'export PATH=~/.eronDeployment:$PATH' >>~/.bash_profile
 		source ~/.bash_profile
 		popd
-	    elif [["$OSTYPE" == "darwin"*]]; then
-		brew update; brew install neovim;
+	    elif [[ "$OSTYPE" == "darwin"* ]]; then
+		brew update
+		brew install neovim
 	    fi
 	    # download vim-plug 
 	    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -34,12 +35,13 @@ do
 	    ;;
 	-V|-vim)
 	    # install new vim
-	    if [["$OSTYPE" == "linux-gnu"]]; then
-		sudo add-apt-repository ppa:jonathonf/vim;
-		sudo apt update;
-		sudo apt install vim;
-	    elif [["$OSTYPE" == "darwin"*]]; then
-		brew update; brew install vim;
+	    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+		sudo add-apt-repository ppa:jonathonf/vim
+		sudo apt update
+		sudo apt install vim
+	    elif [[ "$OSTYPE" == "darwin"* ]]; then
+		brew update
+		brew install vim
 	    fi
 	    # download vim-plug
 	    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
