@@ -30,7 +30,7 @@ do
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	    # move vimrc 
 	    mkdir -p ~/.config/nvim
-	    cp ./vimrc ~/.config/nvim/init.vim
+	    cp ./nvim/init.vim ~/.config/nvim/init.vim
 	    ;;
 	-V|-vim)
 	    # install new vim
