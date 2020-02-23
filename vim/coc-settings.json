@@ -1,9 +1,12 @@
 {
-"languageserver": {
+  "languageserver": {
     "golang": {
-	"command": "gopls",
-    "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-    "filetypes": ["go"]
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     },
     "bash": {
       "command": "bash-language-server",
@@ -13,11 +16,7 @@
     }
   },
   "python.jediEnabled": false,
-  "python.envFile": "${workspaceRoot}/.env" ,
+  "python.envFile": "${workspaceRoot}/.env",
   "python.linting.enabled": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "json",
-    "python"
-  ]
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "json", "python"]
 }
