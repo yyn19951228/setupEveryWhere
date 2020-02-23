@@ -71,7 +71,7 @@ do
 	    ;;
 	-C|-coc)
 	    mkdir -p ~/.vim/
-	    cp coc-settings.json ~/.vim/coc-settings.json
+	    cp ./nvim/coc-settings.json ~/.vim/coc-settings.json
 	    ;;
     esac
 done
