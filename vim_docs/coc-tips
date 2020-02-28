@@ -40,3 +40,19 @@
 
 ## JS/TS
 
+
+## C/C++
+For C/C++, we will use coc-ccls, which is a very powerful LSP for C-family. Some settings for ccls
+1. add .ccls under the root of project, for mac, take this as an example, notes that this is under macOS(darwin) platform
+```
+clang
+-I
+src/include
+-isystem
+/Library/Developer/CommandLineTools/usr/include/c++/v1
+-isystem
+/usr/local/include
+-std=c++17
+-stdlib=libc++
+-fPIC
+```
