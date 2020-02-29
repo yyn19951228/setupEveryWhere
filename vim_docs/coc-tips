@@ -56,3 +56,79 @@ src/include
 -stdlib=libc++
 -fPIC
 ```
+
+2. how to install ccls on mac, pls done use homebrew, follow this instruction
+https://zhuanlan.zhihu.com/p/84876003
+
+获取ccls
+ubuntu/linux用户可以通过官方文档编译安装
+
+编译建议在安装了libclang后直接使用libclang编译，以下是ubuntu18.04编译的方法
+
+sudo apt install clang libclang-dev
+# 下载ccls源码
+git clone https://github.com/MaskRay/ccls
+cd ccls
+# 在ccls根目录下执行
+# 第0步，下载第三方依赖(主要是rapidjson)
+git submodule update --init --recursive
+# cmake 生成makefile
+cmake -H. -Bbuild/Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+make -C ./build/Release -j4
+sudo make install -C ./build/Release
+如果最后一步出现了找不到optional头文件的问题，那你需要安装一个支持c++17的编译器，这里以clang-7为例，将上面的最后三句替换为
+
+cmake -H. -Bbuild/Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=clang++-7
+make -C ./build/Release -j4
+sudo make install -C ./build/Release
+如果想要指定ccls编译的llvm的版本的话可以在cmake的命令前加一句
+
+# 以指定到llvm-7为例
+cmake -H. -Bbuild/Release \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+          -DCMAKE_CXX_COMPILER=clang++-7 \
+          -DClang_DIR=/usr/lib/llvm-7/lib/cmake/clang \
+          -DLLVM_DIR=/usr/lib/llvm-7/cmake/
+make -C ./build/Release -j4
+sudo make install -C ./build/Release
+或者从官方下载预编译包开始入手
+
+# 下载ccls源码
+git clone https://github.com/MaskRay/ccls
+cd ccls
+# 在ccls根目录下执行
+# 第0步，下载第三方依赖(主要是rapidjson)
+git submodule update --init --recursive
+# 第一步，下载llvm的二进制包
+# 这一步可以用任何下载工具代替，只要使用的是这个网址的结果即可
+wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+# 解压二进制包
+tar xf clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+# 在当前文件目录下执行cmake 执行结果保存到Release文件夹中
+cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
+cmake --build Release
+# 开始编译并安装
+cd Release
+# 这里使用4线程编译，当然如果你的电脑够强的话，可以直接-j或者使用更搞核数加快编译
+make -j4
+# 编译完成，安装
+sudo make install
+mac用户想要使用最新版的ccls，那么在编译的时候必须指定llvm的版本，在通过homebrew下载llvm之后，可以通过以下操作安装
+
+# 下载依赖
+brew install llvm
+# 下载ccls源码
+git clone https://github.com/MaskRay/ccls
+cd ccls
+# 在ccls根目录下执行
+# 第0步，下载第三方依赖(主要是rapidjson)
+git submodule update --init --recursive
+cmake -H. -Bbuild/Release \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+          -DClang_DIR=/usr/local/opt/llvm/lib/cmake/clang \
+          -DLLVM_DIR=/usr/local/opt/llvm/lib/cmake
+make -C ./build/Release -j
+sudo make install -C ./build/Release
+需要注意的是如果安装了brew里的rapidjson似乎会造成找不到json头文件的问题。可以在cmake中增加-DUSE_SYSTEM_RAPIDJSON=off参数不使用brew安装的版本
+
+当然home-brew中提供了更简单的安装方式，但是那个版本和最新版已经相差半年，两者的性能差距较大，这里不建议安装brew的版本
