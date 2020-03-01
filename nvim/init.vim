@@ -7,8 +7,8 @@ syntax on			" Enable syntax highlighting"
 
 set autoindent             " Indent according to previous line.
 set expandtab              " Use spaces instead of tabs.
-set softtabstop =4         " Tab key indents by 4 spaces.
-set shiftwidth  =4         " >> indents by 4 spaces.
+set softtabstop =2         " Tab key indents by 4 spaces.
+set shiftwidth  =2         " >> indents by 4 spaces.
 set shiftround             " >> indents to next multiple of 'shiftwidth'
 set tabstop =4
 
@@ -41,7 +41,9 @@ set notagbsearch
 
 set statusline^=%{coc#status()}
 
-set spell
+set spell                  " check spelling 
+
+set t_Co=256               " set 256 color
 
 
 let mapleader = ","
@@ -73,8 +75,12 @@ Plug 'Yggdroot/indentLine'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'bfrg/vim-cpp-modern'
 
 call plug#end()
+
 
 " fish shell is what im currently using "
 " The fish shell is not very compatible to other shells and unexpectedly
@@ -92,8 +98,6 @@ let g:airline_theme='one'
 " ======================
 " set Theme and true color mode, very useful
 " ======================
-" colorscheme gruvbox
-"
 "Credit joshdick
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -111,8 +115,19 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme one
-set background=dark
+" gruvbox
+" colorscheme gruvbox
+
+" one
+" colorscheme one
+" set background=dark
+
+" onehalf
+" colorscheme onehalfdark
+"
+" palenight
+colorscheme palenight
+set background =dark
 
 
 " ======================
@@ -184,7 +199,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
+" " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
@@ -254,7 +269,12 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
 
 " add coc-extensions
-let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git', 'coc-spell-checker', 'coc-markdownlint']
+let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git', 'coc-spell-checker', 'coc-markdownlint', 'coc-highlight']
+
+" add config for coc-highlights
+hi! CocErrorSign guifg=#d1666a
+hi! CocErrorLine guifg=#f0fc03
+hi! CocWarningSign guifg=#03fca1
 
     
 " ======================
