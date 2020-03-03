@@ -31,6 +31,15 @@
 	    "python.autoComplete.extraPaths": ["./projectmain"]
     }
     ```
+3. Currently, I want to use coc-pyright for the type check, and coc-python for LSP, inorder to support that,
+  I need to first set coc-python's interpreter by ":CocCommand python.setInterpreter" and set the interpreter for what I want,
+  then I need to also set this interpreter for coc-pyright in the "CocConfig" with
+    ```
+    {
+	    "python.pythonPath": ["path/to/interpreter"],
+        "pyright.disableLanguageServices": true, # to disable the languague, only focus on type checking
+    }
+    ```
 
 
 ## GoLang
