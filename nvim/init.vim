@@ -269,12 +269,15 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"
 
 " add coc-extensions
-let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git', 'coc-spell-checker', 'coc-markdownlint', 'coc-highlight']
+let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-lists', 'coc-highlight', 'coc-pairs', 'coc-yank', 'coc-git', 'coc-spell-checker', 'coc-markdownlint', 'coc-highlight', 'coc-marketplace', 'coc-snippets']
+
 
 " add config for coc-highlights
 hi! CocErrorSign guifg=#d1666a
 hi! CocErrorLine guifg=#f0fc03
 hi! CocWarningSign guifg=#03fca1
+hi! CocWarningLine guifg=#03fca1
+hi! CocHighlightText guifg=#ffb92b
 
     
 " ======================
