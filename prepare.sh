@@ -9,7 +9,7 @@ if [[ -z "$userInput" ]]; then
    printf '%s\n' "No input entered"
    exit 1
 else
-  if [[ $userInput == "Y" ]]; then
+  if [[ $userInput == "Y" ]] || [[ $userInput == "y" ]]; then
     cp ~/.vimrc ./vim/vimrc
     cp ~/.vim/coc-settings.json ./vim/coc-settings.json
     cp ~/.config/nvim/init.vim ./nvim/init.vim
