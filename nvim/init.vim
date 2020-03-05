@@ -334,7 +334,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 nmap <space>e :NERDTreeToggle<CR>"
-
+" nmap <space>e :CocCommand explorer<CR>
 
 " ======================
 " settings for tags, (deprecated, due to the usage of COC right now)

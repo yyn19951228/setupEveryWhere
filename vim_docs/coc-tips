@@ -48,6 +48,15 @@
 
 
 ## JS/TS
+1. Install coc-tsserver and coc-eslint, (I am not sure about coc-tslint-plugin) .
+2. Some system default package might have such issues 
+'''
+import fs from 'fs'  # [tsserver 1192] [E] Module '"fs"' has no default export.
+'''
+write this line instead:
+'''
+import * as fs from 'fs'
+'''
 
 
 ## C/C++
