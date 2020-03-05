@@ -45,8 +45,9 @@ set spell                  " check spelling
 
 set t_Co=256               " set 256 color
 
+let mapleader = ","        " set leader key
 
-let mapleader = ","
+tnoremap <C-[> <C-\><C-n>
 
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
