@@ -1,11 +1,12 @@
 {
   "languageserver": {
     "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "command": "go-langserver",
       "filetypes": ["go"],
       "initializationOptions": {
-        "usePlaceholders": true
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
       }
     },
     "bash": {
@@ -14,10 +15,10 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
-     "ccls": {
+    "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
       "initializationOptions": {
          "cache": {
            "directory": "/tmp/ccls"
@@ -29,5 +30,5 @@
   "python.envFile": "${workspaceRoot}/.env",
   "python.linting.enabled": true,
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "json", "python", "go", "c", "cpp"],
-  "coc.preferences.colorSupport": true,
+  "coc.preferences.colorSupport": true
 }

@@ -62,6 +62,7 @@ import * as fs from 'fs'
 ## C/C++
 For C/C++, we will use coc-ccls, which is a very powerful LSP for C-family. Some settings for ccls
 1. add .ccls under the root of project, for mac, take this as an example, notes that this is under macOS(darwin) platform
+notes that .ccls may only works well for some small proj
 ```
 clang
 -I
@@ -74,6 +75,9 @@ src/include
 -stdlib=libc++
 -fPIC
 ```
+1.5. Sometime, the .ccls file may work abnormally since it lacks many flags, so I prefer using cmake to regenerate the make file, as well as generate the 
+compile_commands.json, to generate compile_commands.json, add -DCMAKE_EXPORT_COMPILE_COMMANDS=1 in the cmake, (could use cmake software), and put the 
+compile_commands.json under the root/dir
 
 2. how to install ccls on mac, pls done use homebrew, follow this instruction
 https://zhuanlan.zhihu.com/p/84876003
